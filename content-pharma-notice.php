@@ -7,9 +7,15 @@
 <script>
 	jQuery(document).ready( function($) {
 		$('#pharman').click(function() {
-		$('li.orbit-slide.restricted').addClass('pharmano');
+		$('li.orbit-slide').addClass('pharmano');
 		});
 	});
+	jQuery(document).ready( function($) {
+		$('li.orbit-slide.pharmano').click(function() {
+		$('#element').foundation('changeSlide');
+		});
+	});
+
 </script>
 
 <div id="home-pharma-callout" class="home-pharma callout" data-closable="slide-out-up">

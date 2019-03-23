@@ -12,7 +12,7 @@ get_header(); ?>
 
 
 <div class="home-slide-row align-center">
-	<div class="orbit" role="region" aria-label="The British Dermatological Nursing Group" data-orbit data-options="animInFromLeft:fade-in; animInFromRight:fade-in; animOutToLeft:fade-out; animOutToRight:fade-out;">
+	<div class="orbit" role="region" aria-label="The British Dermatological Nursing Group" data-orbit data-use-m-u-i="false">
 		<?php if ( have_rows( 'home_slider' ) ) : ?>
 		<ul class="orbit-container">
 			<?php
@@ -22,8 +22,21 @@ get_header(); ?>
 				$alttext = get_sub_field( 'slide_name' );
 				$linktarget = get_sub_field( 'open_in' );
 				$linkurl = get_sub_field( 'slide_link' );
+				$restricted = get_sub_field( array(
+					'meta_query'	=> array(
+						array(
+							'key' 		=> 'restrict_to_pharma',
+							'compare'	=> '=',
+							'value'		=> '1',
+						),
+					),
+				));
 			?>
-				
+				<?php
+					if ( $restricted ) :
+						// dont show slide
+					else :
+				?>
 						<li class="orbit-slide">
 							<?php if ( $linkurl ) : ?>
 								<a target="<?php echo esc_html( $linktarget ); ?>" title="<?php echo esc_html( $alttext ); ?>" href="<?php echo esc_url( $linkurl ); ?>" >
@@ -33,6 +46,8 @@ get_header(); ?>
 								</a>
 							<?php endif; ?>	
 						</li>
+				<?php endif; ?>
+						
 					
 			<?php endwhile;
 			wp_reset_postdata(); ?>

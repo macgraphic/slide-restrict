@@ -12,7 +12,7 @@ get_header(); ?>
 
 
 <div class="home-slide-row align-center">
-	<div class="orbit" role="region" aria-label="The British Dermatological Nursing Group" data-orbit data-use-m-u-i="false">
+	<div class="orbit" role="region" aria-label="CHANGE THIS" data-orbit data-options="animInFromLeft:fade-in; animInFromRight:fade-in; animOutToLeft:fade-out; animOutToRight:fade-out;">
 		<?php if ( have_rows( 'home_slider' ) ) : ?>
 		<ul class="orbit-container">
 			<?php
@@ -31,24 +31,16 @@ get_header(); ?>
 						),
 					),
 				));
-			?>
-				<?php
-					if ( $restricted ) :
-						// dont show slide
-					else :
-				?>
-						<li class="orbit-slide">
-							<?php if ( $linkurl ) : ?>
-								<a target="<?php echo esc_html( $linktarget ); ?>" title="<?php echo esc_html( $alttext ); ?>" href="<?php echo esc_url( $linkurl ); ?>" >
-							<?php endif; ?>
-								<img src="<?php echo esc_url( $image['url'] ); ?>" alt="<?php echo esc_html( $alttext ); ?>" />
-							<?php if ( $linkurl ) : ?>
-								</a>
-							<?php endif; ?>	
-						</li>
-				<?php endif; ?>
-						
-					
+			?>	
+				<li class="orbit-slide">
+					<?php if ( $linkurl ) : ?>
+						<a target="<?php echo esc_html( $linktarget ); ?>" title="<?php echo esc_html( $alttext ); ?>" href="<?php echo esc_url( $linkurl ); ?>" >
+					<?php endif; ?>
+						<img src="<?php echo esc_url( $image['url'] ); ?>" alt="<?php echo esc_html( $alttext ); ?>" />
+					<?php if ( $linkurl ) : ?>
+						</a>
+					<?php endif; ?>	
+				</li>
 			<?php endwhile;
 			wp_reset_postdata(); ?>
 		</ul>

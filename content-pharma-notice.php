@@ -5,6 +5,10 @@
 ?>
 
 <script>
+
+	// IF USER ANSWERS 'NO' DO NOT SHOW SLIDES WHERE 
+	// THE meta_query KEY restrict_to_pharma EQUALS 1 (TRUE)
+	
 	jQuery(document).ready( function($) {
 		$('#pharman').click(function() {
 		$('li.orbit-slide').addClass('pharmano');
@@ -12,10 +16,15 @@
 	});
 	jQuery(document).ready( function($) {
 		$('li.orbit-slide.pharmano').click(function() {
-		$('#element').foundation('changeSlide');
+		$('#element').remove();
 		});
 	});
 
+</script>
+
+
+<script>
+	//SET A COOKIE SO USER CHOICE IS SAVED
 </script>
 
 <div id="home-pharma-callout" class="home-pharma callout" data-closable="slide-out-up">

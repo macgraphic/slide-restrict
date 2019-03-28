@@ -6,14 +6,12 @@
 			this.modifierCookies=modifierCookies;
 			this.supprimerCookies=supprimerCookies;
 			this.afficherCookies=afficherCookies;
-
 			function creerCookies(nom,contenu,nbJour)
 			{
 				var theDate = new Date();
 				theDate.setTime(theDate.getTime()+(nbJour*24*3600*1000));
 				document.cookie=nom+"="+contenu+";expires="+theDate.toUTCString();
 			}
-
 			function modifierCookies(nom,contenu,nbJour)
 			{
 				c.creerCookies(nom,contenu,nbJour);
@@ -31,16 +29,12 @@
 				{
 					var cooki = tabCookies[i].split(";");
 					for(var j in cooki)
-
 						var cookieValue= cooki[j].split("=")
-
 					for(var k in cookieValue)
 					{
-
 						if(cookieValue[k]==nom)
 						{
 							etat= cookieValue[parseInt(k)+1];
-
 						}
 					}
 				}
@@ -48,7 +42,6 @@
 			}
 		}
 		var c = new Cookies();
-
 			if(c.afficherCookies("choose")!="")
 			{
 				if(c.afficherCookies("choose")=="no");
@@ -56,22 +49,9 @@
 					$(".restricted").remove();
 				}
 				$("#home-pharma-callout").css("display","none");
-				
-			   
-
 			}
 			var btnYes = $("#btnYes");
 		var btnNo = $("#btnNo");
-		btnYes.on("click",function () {
-			var c = new Cookies();
-			console.log(c.afficherCookies("chose"));
-			if(c.afficherCookies("choose")=="")
-			{
-				c.creerCookies("choose","yes",7);
-
-			}
-
-		});
 		btnNo.on("click",function () {
 			var c = new Cookies();
 			if(c.afficherCookies("choose")=="")
@@ -79,13 +59,16 @@
 				c.creerCookies("choose","no",7);
 				$(".restricted").remove();
 			}
-
+		});
+		btnYes.on("click",function () {
+			var c = new Cookies();
+			console.log(c.afficherCookies("chose"));
+			if(c.afficherCookies("choose")=="")
+			{
+				c.creerCookies("choose","yes",7);
+			}
 		});
 		});
-
-	
-	
-	
 </script>
 
 <div id="home-pharma-callout" class="home-pharma callout" data-closable="slide-out-up">
